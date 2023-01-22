@@ -1,0 +1,292 @@
+snippet prog "Program"
+! +-------------------------------------------+
+! | Author: Jose Antonio Quinonero Gris       |
+! | Creation date: `date +%A` `date +%T` `date +%d-%m-%Y` |
+! +-------------------------------------------+
+
+program $2
+	!
+	! $3
+	!
+	! IMPLICIT REAL*8(A-H,O-Z)
+	! IMPLICIT INTEGER(I-N)
+	!
+	! Variable definition
+	!
+	implicit none
+	!
+
+	!
+	! Files
+	!
+	!
+	! Formats
+	!
+	!
+	! === START OF THE PROGRAM ===
+	!
+	write(*,*) '+------------------+'
+	write(*,*) '| Program $2 |'
+	write(*,*) '+------------------+'
+	write(*,*)
+	!
+	$0
+	!
+	stop
+endprogram $2
+endsnippet
+
+snippet sprog "Subprogram"
+! +-------------------------------------------+
+! | Author: Jose Antonio Quinonero Gris       |
+! | Creation date: `date +%A` `date +%T` `date +%d-%m-%Y` |
+! +-------------------------------------------+
+endsnippet
+
+snippet module "Module procedure" i
+! +-------------------------------------------+
+! | Author: Jose Antonio Quinonero Gris       |
+! | Creation date: `date +%A` `date +%T` `date +%d-%m-%Y` |
+! +-------------------------------------------+
+
+module ${1:name of module}
+	implicit none
+	contains
+		$0
+end module
+endsnippet
+
+snippet alo "Allocate" i
+allocate($1($2), stat=ierr)
+if (ierr .ne. 0) stop '${3:main.f90}: Error in allocation of $1'
+$0
+endsnippet
+
+snippet cc "Comment" A
+! $1
+$0
+endsnippet
+
+snippet pr "Print"
+print *, "$1" $0
+endsnippet
+
+snippet com "Comment" b
+!
+! $1
+!
+$0
+endsnippet
+
+snippet int "integer"
+integer :: $1 $0
+endsnippet
+
+snippet re "real"
+real(kind=8) :: $1 $0
+endsnippet
+
+snippet wr "write"
+write(${1:*},${2:*}) ${3:'$4'}$0
+endsnippet
+
+snippet rd "Read"
+read(${1:*},${2:*}) $0
+endsnippet
+
+snippet rcons "Constant"
+real, parameter :: $1
+endsnippet
+
+snippet icons "Constant"
+integer, parameter :: $0
+endsnippet
+
+snippet ivec "Integer vector"
+integer, dimension(${1:[Ninicial]}:${2:Nfinal}) :: ${3:Variable} $0
+endsnippet
+
+snippet rvec "Real vector"
+real(kind=8), dimension($1}) :: ${2:Variable} $0
+endsnippet
+
+snippet rmat "Real matrix"
+real(kind=8), dimension($1,$2}) :: ${3:Variable} $0
+endsnippet
+
+snippet imat "Integer matrix"
+integer, dimension($1${2:,$3}) :: ${7:Variable} $0
+endsnippet
+
+snippet ido "Implicit do"
+${1:write}(${2:*},${3:*}) ($4(i), i = $5, $6, $7) $0
+endsnippet
+
+snippet cha "Character"
+character(len=$1) :: $2 $0
+endsnippet
+
+snippet if "if simple"
+if ($1) ${2:then, cycle, exit} $0
+endsnippet
+
+snippet eif "elseif simple"
+elseif ($1) ${2:then, cycle, exit} $0
+endsnippet
+
+snippet fif "Entorno if"
+if ($1) ${2:then}
+    $3
+${4:elseif ($5) then
+	$6}
+${7:else
+	$8}
+endif $0
+endsnippet
+
+snippet ei "elseif"
+elseif ($1) then
+    $2
+$0
+endsnippet
+
+snippet dowh "do while"
+do while (${1:condicion logica})
+	$2
+end do $0
+endsnippet
+
+snippet ndowh "named do while"
+$1 : do while (${3:condicion logica})
+	$4
+end do $1 $0
+endsnippet
+
+snippet do "bucle do"
+${1:label}: do ${2:indice = valor_inicial}, ${3:valor_final}, ${4:incremento (default 1)}
+	${5:instruccion}
+end do $1 $0
+endsnippet
+
+snippet ndo "named bucle do"
+$1 : do ${2:indice = valor_inicial}, ${3:valor_final}, ${4:incremento (default 1)}
+	${5:instruccion}
+end do $1 $0
+endsnippet
+
+snippet op "open"
+open(unit=${1:xx}, file="${2:archivo}.dat")$0
+endsnippet
+
+snippet cl "close"
+close($1)$0
+endsnippet
+
+snippet sq "raiz cuadrada" i
+sqrt($1)$0
+endsnippet
+
+snippet e "Exponencial"
+exp($1) $0
+endsnippet
+
+snippet s "Sin()"
+sin($1)$0
+endsnippet
+
+snippet c "Cos()"
+cos($1)$0
+endsnippet
+
+snippet decims "Decimales de numeros reales"
+integer, parameter :: long = selected_real_kind(${1:digitos}, ${2:exponente}) $3
+! Posibles instrucciones
+! real (kind = long), parameter :: h = 6.626*1.0E-34_long
+! real (kind = long) :: a
+! a = 2.0_long
+$0
+endsnippet
+
+snippet sum "Funcion sumatorio"
+sum(${1:array}${2:(${3:valor inicial}:${4:valor final})}${5:, mask = ${6:condicion}})$0
+endsnippet
+
+snippet prod "Funcion productorio"
+product(${1:array}${2:(${3:valor inicial}:${4:valor final})}${5:, mask = ${6:condicion}})$0
+endsnippet
+
+snippet dot "Dot product"
+dot_product(${1:vector 1}, ${2:vector 2})
+endsnippet
+
+snippet max "Max value"
+maxval(${1:vector 1}${2:, mask = ${3:condicion}})
+endsnippet
+
+snippet min "Min value"
+minval(${1:vector 1}${2:, mask = ${3:condicion}})
+endsnippet
+
+snippet rdmat "Read Matrix"
+read(${1:*},${2:*}) ((${3:variable(i, j)}, ${4:i = ${5:min1}, ${6:max1}, ${7:inc1}}), ${8:j = ${9:min2}, ${10:max2}, ${11:inc2}}) $0
+endsnippet
+
+snippet wrmat "Write Matrix"
+write(${1:*},${2:*}) ((${3:variable(i, j)}, ${4:i = ${5:min1}, ${6:max1}, ${7:inc1}}), ${8:j = ${9:min2}, ${10:max2}, ${11:inc2}}) $0
+endsnippet
+
+snippet trans "Transpose matrix"
+transpose($1)$0
+endsnippet
+
+snippet matprod "Matrix product"
+matmul($1, $2)$0
+endsnippet
+
+snippet func "Function"
+${1:real, recursive, ...} function ${2:Nombre_funcion}(${3:argumentos})
+	implicit none
+	${4:real(kind=8)}, intent(in) :: $3
+
+	$2 = $5
+
+end function $2 $0
+endsnippet
+
+snippet subr "Subroutine"
+subroutine ${1:Nombre_subrutina}(${2:argumentos_in}, ${3:argumentos_out})
+	implicit none
+	${4:real(kind=8)}, intent(in) :: $2
+	${5:real(kind=8)}, intent(out) :: $3
+	!
+	$6
+	!
+	return
+end subroutine $1 $0
+endsnippet
+
+snippet interf "Interface"
+interface
+	$1
+end interface $0
+endsnippet
+
+snippet intfunc "Interface function"
+	function $1($2) result($3)
+		implicit none
+		${4:real}, intent(in) :: $2
+		${5:real} :: $3
+	end function $1
+endsnippet
+
+snippet intsubr "Interface subroutine"
+	subroutine $1($2, $3)
+		implicit none
+		${4:real}, intent(in) :: $2
+		${5:real}, intent(out) :: $3
+	end subroutine $1
+endsnippet
+
+snippet call "Call subroutine"
+call ${1:Nombre de la subrutina}(${2:argumentos})$0
+endsnippet

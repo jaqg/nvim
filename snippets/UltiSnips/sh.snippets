@@ -1,0 +1,53 @@
+snippet sb "Shebang"
+#!/bin/sh
+endsnippet
+
+snippet prog "Program"
+#! /bin/bash
+# +-------------------------------------------------+
+# | Autor: José Antonio Quiñonero Gris              |
+# | Fecha de creacion: `date +%A` `date +%T` `date +%d-%m-%Y` |
+# +-------------------------------------------------+
+# Script name: $1
+# Description: $2
+$0
+endsnippet
+
+snippet fex "Fortran executable"
+#! /bin/bash
+# +-------------------------------------------------+
+# | Autor: José Antonio Quiñonero Gris              |
+# | Fecha de creacion: `date +%A` `date +%T` `date +%d-%m-%Y` |
+# +-------------------------------------------------+
+
+ejercicio='$1'
+modulo='$0'
+
+clear
+# echo "Compilando $modulo.f90"
+gfortran -c $modulo.f90
+# echo "Compilando $ejercicio.f90"
+gfortran -c $ejercicio.f90
+# echo "Creando ejecutable $ejercicio"
+gfortran -std=f95 -o $ejercicio $modulo.o $ejercicio.o
+# echo "Ejecuantado $ejercicio"
+./$ejercicio
+# echo "Fin"
+endsnippet
+
+
+snippet gulp "Program"
+#! /bin/bash
+# |-------------------------------------------------|
+# | Autor: José Antonio Quiñonero Gris              |
+# | Fecha de creacion: `date +%A` `date +%T` `date +%d-%m-%Y` |
+# |_________________________________________________|
+# Script name: exec
+# Description: ejecutable para cálculo de GULP
+
+file_name='$0'
+
+rm -f $file_name.got
+gulp < $file_name.gin > $file_name.got
+echo "Cálculo GULP terminado con éxito"
+endsnippet

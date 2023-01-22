@@ -1,0 +1,153 @@
+snippet prog "Empezar un programa"
+# _____________________________________________________________________________
+# *****************************************************************************
+# Autor: José Antonio Quiñonero Gris
+# Fecha de creación: `date +%A` `date +%T` `date +%d-%m-%Y`
+# *****************************************************************************
+# -----------------------------------------------------------------------------
+
+# ${2:descripcion del programa}
+
+# Librerias
+import numpy as np
+import matplotlib.pyplot as plt
+$3
+
+# *****************************************************************************
+# INICIO
+# *****************************************************************************
+
+$0
+endsnippet
+
+snippet figprog "figure template"
+# _____________________________________________________________________________
+# *****************************************************************************
+# Autor: José Antonio Quiñonero Gris
+# Fecha de creación: `date +%A` `date +%T` `date +%d-%m-%Y`
+# *****************************************************************************
+# -----------------------------------------------------------------------------
+
+# descripcion del programa
+
+# Librerias
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+plt.style.use('mine')
+
+# *****************************************************************************
+# INICIO
+# *****************************************************************************
+
+nombre_grafica = ${2:os.path.basename(__file__).replace(".py", ".pdf")}
+
+${3:fichero_datos} = './$4'
+${5:varibles} = np.loadtxt($3, unpack=True, skiprows=$6)
+
+# GRAFICA
+xmin = $7
+xmax = $8
+ymin = $9
+ymax = $10
+
+# width as measured in inkscape
+# width = 15.922
+# height = width / 1.618
+
+numero_subplots = 1
+width = 5 #Default 7.2x4.45
+height = width*(4.45/7.2)
+
+fig, ax = plt.subplots(figsize=(width*numero_subplots, height*numero_subplots))
+fig.subplots_adjust(left=.15, bottom=.16, right=.99, top=.97)
+
+ax.plot($11)
+
+# ax.fill_between(x, y1, y2)
+# ax.text(x, y, string, horizontalalignment='center', verticalalignment='center')
+
+ax.set(${12:title=r'Titulo', }xlabel=r'$13', ylabel=r'$14')
+
+ax.set_xlim(xmin,xmax)
+ax.set_ylim(ymin,ymax)
+
+# Invertir el orden de las etiquetas
+# handles, labels = ax.get_legend_handles_labels()
+# ax.legend(handles[::-1], labels[::-1], loc=(1.01,0.4))
+
+# ax.text(0.02, 0.975, 'a)', fontsize=14, bbox=dict(facecolor='white', alpha=0.5), horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
+
+$0
+plt.savefig(nombre_grafica, transparent='True', bbox_inches='tight')
+
+# En caso de usar las medidas width y height (ver https://www.bastibl.net/publication-quality-plots/)
+# fig.set_size_inches(width, height)
+# plt.savefig(nombre_grafica)
+endsnippet
+
+snippet im "import"
+import $1 ${2:as $3} $0
+endsnippet
+
+snippet com "Comment"
+#
+# $1
+# $0
+endsnippet
+
+snippet pt "print"
+print($1) $0
+endsnippet
+
+snippet def "Definiciones"
+def $1:
+	${2:others}
+	return $3
+$0
+endsnippet
+
+snippet if "if loop"
+if $1:
+	$0
+endsnippet
+
+snippet eif "elseif"
+elif $1:
+	$0
+endsnippet
+
+snippet wh "while loo"
+while $1:
+	$0
+endsnippet
+
+snippet for "for loop"
+for $1 in $2:
+	$0
+endsnippet
+
+snippet rc "Matplotlib params"
+mpl.rcParams['$1'] = $0
+endsnippet
+
+snippet sq "raiz cuadrada"
+np.sqrt($1)$0
+endsnippet
+
+snippet e "exponencial"
+np.exp($1)$0
+endsnippet
+
+snippet sin "sin()"
+np.sin($1)$0
+endsnippet
+
+snippet cos "cos()"
+np.cos($1)$0
+endsnippet
+
+snippet pi "pi number"
+np.pi
+endsnippet
