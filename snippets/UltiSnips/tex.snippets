@@ -11,9 +11,98 @@ def env(name):
 	return x != '0' and y != '0'
 
 endglobal
+
+# local M = {}
+#
+# local has_treesitter, ts = pcall(require, 'vim.treesitter')
+# local _, query = pcall(require, 'vim.treesitter.query')
+#
+# local MATH_NODES = {
+#     displayed_equation = true,
+#     inline_formula = true,
+#     math_environment = true,
+# }
+#
+# local COMMENT = {
+#     ['comment'] = true,
+#     ['line_comment'] = true,
+#     ['block_comment'] = true,
+#     ['comment_environment'] = true,
+# }
+#
+# local function get_node_at_cursor()
+#     local buf = vim.api.nvim_get_current_buf()
+#     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+#     row = row - 1
+#     col = col - 1
+#
+#     local ok, parser = pcall(ts.get_parser, buf, 'latex')
+#     if not ok or not parser then return end
+#
+#     local root_tree = parser:parse()[1]
+#     local root = root_tree and root_tree:root()
+#
+#     if not root then
+#         return
+#     end
+#
+#     return root:named_descendant_for_range(row, col, row, col)
+# end
+#
+# function M.in_comment()
+#     if has_treesitter then
+#         local node = get_node_at_cursor()
+#         while node do
+#             if COMMENT[node:type()] then
+#                 return true
+#             end
+#             node = node:parent()
+#         end
+#         return false
+#     end
+# end
+#
+# function M.in_mathzone()
+#     if has_treesitter then
+#         local node = get_node_at_cursor()
+#         while node do
+#             if node:type() == 'text_mode' then
+#                 return false
+#             elseif MATH_NODES[node:type()] then
+#                 return true
+#             end
+#             node = node:parent()
+#         end
+#         return false
+#     end
+# end
+#
+# return M
+#
+
 #=============================================================
 # Mis snippets
 #=============================================================
+
+context "math()"
+snippet elo "eo" iA
+\eo{$1}$0
+endsnippet 
+
+context "math()"
+snippet elt "et" iA
+\et{$1}$0
+endsnippet 
+
+context "math()"
+snippet coef "et" iA
+\coefp{$1}{$2}$0
+endsnippet 
+
+context "math()"
+snippet pi "eo" A
+\pi
+endsnippet 
 
 snippet template_informe "plantilla informes TFG" iA
 ! _____________________________________________________________________________
@@ -72,6 +161,10 @@ endsnippet
 snippet lb "label" i
 \label{$1}$0
 endsnippet
+
+snippet ref "Clever reference" i
+\cref{$1}$0
+endsnippet 
 
 snippet fr "Figure reference" i
 \figref{fig:$1}$0
@@ -139,6 +232,11 @@ snippet <> "Braket" iA
 endsnippet
 
 context "math()"
+snippet bk "Braket" i
+\Braket{$1 | $2}$0
+endsnippet
+
+context "math()"
 snippet bs "bold symbol" iA
 \boldsymbol{$1}$0
 endsnippet
@@ -189,7 +287,7 @@ endsnippet
 # endsnippet
 
 context "math()"
-snippet mat "matrix" iA
+snippet mat "matrix" i
 \mat{$1}$0
 endsnippet
 
@@ -689,12 +787,11 @@ snippet dm "Math" wA
 \] $0
 endsnippet
 
-snippet ali "Align" bA
-\begin{align*}
+snippet ali "Align" b
+\begin{align}
 	${1:${VISUAL}}
-.\end{align*}
+\end{align}
 endsnippet
-
 
 context "math()"
 snippet // "Fraction" iA
@@ -871,7 +968,7 @@ endsnippet
 
 context "math()"
 snippet sq "\sqrt{}" iA
-\sqrt{${1:${VISUAL}}} $0
+\sqrt{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"

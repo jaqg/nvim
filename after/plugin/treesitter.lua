@@ -2,7 +2,7 @@
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'bash', 'fortran', 'lua', 'python', 'markdown', 'markdown_inline', 'help' },
+  ensure_installed = { 'latex', 'bash', 'fortran', 'lua', 'python', 'markdown', 'markdown_inline', 'help' },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   -- Automatically install missing parsers when entering buffer
@@ -14,7 +14,10 @@ require('nvim-treesitter.configs').setup {
   -- Instead of true it can also be a list of languages
   additional_vim_regex_highlighting = false,
   -- Highlight
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    disable = { "latex" },
+  },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
