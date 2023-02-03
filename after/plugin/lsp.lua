@@ -136,8 +136,8 @@ local luasnip = require 'luasnip'
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For luasnip
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips`
+      luasnip.lsp_expand(args.body) -- For luasnip
     end,
   },
   mapping = cmp.mapping.preset.insert {
@@ -156,18 +156,28 @@ cmp.setup {
     ['<Tab>'] = nil,
     ['<S-Tab>'] = nil,
     ['<C-j>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      -- if cmp.visible() then
+      --   cmp.select_next_item()
+      -- elseif luasnip.expand_or_jumpable() then
+      --   luasnip.expand_or_jump()
+      -- else
+      --   fallback()
+      -- end
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end
     end, { 'i', 's' }),
     ['<C-k>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      -- if cmp.visible() then
+      --   cmp.select_prev_item()
+      -- elseif luasnip.jumpable(-1) then
+      --   luasnip.jump(-1)
+      -- else
+      --   fallback()
+      -- end
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
@@ -186,8 +196,8 @@ cmp.setup {
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
 	copilot = "[Copilot]",
-	luasnip = "LuaSnip",
 	ultisnips = "[US]",
+	luasnip = "[LuaSnip]",
 	nvim_lua = "[NVim Lua]",
 	nvim_lsp = "[LSP]",
 	buffer = "[Buffer]",
@@ -197,18 +207,18 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = 'ultisnips' },
     { name = 'nvim_lsp' },
     { name = 'copilot' },
     { name = 'luasnip' },
-    { name = 'ultisnips' },
-    { name = "cmp_matlab" },
+    -- { name = "cmp_matlab" },
     -- { name = "cmp_octave" },
-    {
-      name = "latex_symbols",
-      option = {
-        strategy = 0, -- mixed
-      },
-    },
+    -- {
+    --   name = "latex_symbols",
+    --   option = {
+    --     strategy = 0, -- mixed
+    --   },
+    -- },
   },
   -- documentation = {
 	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
