@@ -84,6 +84,19 @@ endglobal
 # Mis snippets
 #=============================================================
 
+snippet codeline "Inline code" i
+\inline{$1}$0
+endsnippet 
+
+snippet codefile "Insert code file" i
+\lstinputlisting[
+	language=bash,
+	% firstline=2,
+	% lastline=12,
+	% caption=
+]{$1}$0
+endsnippet 
+
 context "math()"
 snippet elo "eo" iA
 \eo{$1}$0
@@ -234,6 +247,11 @@ endsnippet
 context "math()"
 snippet bk "Braket" i
 \Braket{$1 | $2}$0
+endsnippet
+
+context "math()"
+snippet average "Braket" i
+\Braket{$1}$0
 endsnippet
 
 context "math()"

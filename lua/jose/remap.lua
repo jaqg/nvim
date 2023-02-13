@@ -54,3 +54,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Remaps for luasnip
 -- vim.keymap.set({"i", "s"}, "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", {noremap = true, silent = true})
 -- vim.keymap.set({"i", "s"}, "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", {noremap = true, silent = true})
+
+-- Remaps for quick compilation of python files
+-- TODO: make it for buffertype .py
+vim.keymap.set("n", "<leader>cp", "<cmd>w | !python3 %<CR>")
+vim.keymap.set("n", "<leader>cv", "<cmd>!zathura %:r.pdf<CR>")
+
+-- Remap for spell check
+vim.keymap.set("n", "<leader>sp", "<cmd>setlocal spell spelllang=en_us<CR>")

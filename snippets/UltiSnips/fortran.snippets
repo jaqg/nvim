@@ -56,6 +56,26 @@ module ${1:name of module}
 end module
 endsnippet
 
+snippet bl "blank line" i
+write(${1:*},*)$0
+endsnippet 
+
+snippet inte "intent()" i
+intent($1)$0
+endsnippet 
+
+snippet log "logical" i
+logical :: $0
+endsnippet 
+
+snippet aloc "allocatable" i
+allocatable$0
+endsnippet
+
+snippet dim "dimension" i
+dimension($1)$0
+endsnippet 
+
 snippet alo "Allocate" i
 allocate($1($2), stat=ierr)
 if (ierr .ne. 0) stop '${3:main.f90}: Error in allocation of $1'
@@ -73,9 +93,8 @@ endsnippet
 
 snippet com "Comment" b
 !
-! $1
+! $0
 !
-$0
 endsnippet
 
 snippet int "integer"
@@ -183,7 +202,7 @@ close($1)$0
 endsnippet
 
 snippet sq "raiz cuadrada" i
-sqrt($1)$0
+dsqrt($1)$0
 endsnippet
 
 snippet e "Exponencial"

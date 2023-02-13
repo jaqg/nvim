@@ -21,8 +21,45 @@ return require('packer').startup(function(use)
                   vim.cmd('colorscheme rose-pine')
           end
   })
-  use 'folke/tokyonight.nvim'
-  -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use({
+          'catppuccin/nvim',
+          as = 'catppuccin',
+          -- config = function()
+          --         vim.cmd('colorscheme catppuccin')
+          -- end
+  })
+  use({
+          'folke/tokyonight.nvim',
+          as = 'tokyonight',
+  --         config = function()
+  --                 vim.cmd('colorscheme tokyonight')
+  --         end
+  })
+  use({
+          'navarasu/onedark.nvim',
+          as = 'onedark',
+  --         config = function()
+  --                 vim.cmd('colorscheme onedarkonedark')
+  --         end
+  })
+  use({
+          'savq/melange-nvim',
+          as = 'melange',
+  --         config = function()
+  --                 vim.cmd('colorscheme melange')
+  --         end
+  })
+  use({
+          'mcchrish/zenbones.nvim',
+          as = 'zenbones',
+  --         config = function()
+  --                 vim.cmd('colorscheme zenbones')
+  --         end
+          -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+          -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+          -- In Vim, compat mode is turned on as Lush only works in Neovim.
+          requires = "rktjmp/lush.nvim"
+  })
   -- }}
 
   use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
@@ -41,6 +78,7 @@ return require('packer').startup(function(use)
       {'williamboman/mason-lspconfig.nvim'},
       {'folke/neodev.nvim'}, -- Additional lua configuration, makes nvim stuff amazing
       {'j-hui/fidget.nvim'}, -- Useful status updates for LSP
+      {'folke/lsp-colors.nvim'}, -- Creates missing LSP diagnostics highlight groups
 
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},
@@ -50,8 +88,8 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-nvim-lua'},
       {'kdheepak/cmp-latex-symbols'},
-      {'mstanciu552/cmp-matlab'},
-      {'mstanciu552/cmp-octave'},
+      -- {'mstanciu552/cmp-matlab'},
+      -- {'mstanciu552/cmp-octave'},
 
       -- Snippets
       {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"},
