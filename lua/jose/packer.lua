@@ -101,7 +101,7 @@ return require('packer').startup(function(use)
   }
 
   use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
+  -- use("github/copilot.vim")
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -114,5 +114,15 @@ return require('packer').startup(function(use)
   use {
     'christoomey/vim-tmux-navigator',
     lazy = false,
+  }
+
+  use {
+    'Exafunction/codeium.vim',
+    -- config = function ()
+    --   vim.keymap.set('i', '<C-cr>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+    --   vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+    --   vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+    --   vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    -- end
   }
 end)
