@@ -99,11 +99,6 @@ _G.packer_plugins = {
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/cmp-latex-symbols",
     url = "https://github.com/kdheepak/cmp-latex-symbols"
   },
-  ["cmp-matlab"] = {
-    loaded = true,
-    path = "/home/jose/.local/share/nvim/site/pack/packer/start/cmp-matlab",
-    url = "https://github.com/mstanciu552/cmp-matlab"
-  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -118,11 +113,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
     url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
-  },
-  ["cmp-octave"] = {
-    loaded = true,
-    path = "/home/jose/.local/share/nvim/site/pack/packer/start/cmp-octave",
-    url = "https://github.com/mstanciu552/cmp-octave"
   },
   ["cmp-path"] = {
     loaded = true,
@@ -164,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lsp-colors.nvim"] = {
+    loaded = true,
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
+    url = "https://github.com/folke/lsp-colors.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -174,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -183,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  melange = {
+    loaded = true,
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/melange",
+    url = "https://github.com/savq/melange-nvim"
   },
   ["neodev.nvim"] = {
     loaded = true,
@@ -260,6 +265,11 @@ _G.packer_plugins = {
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/vim-sleuth",
     url = "https://github.com/tpope/vim-sleuth"
   },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
   vimtex = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/vimtex",
@@ -269,6 +279,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jose/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
+  },
+  zenbones = {
+    loaded = true,
+    path = "/home/jose/.local/share/nvim/site/pack/packer/start/zenbones",
+    url = "https://github.com/mcchrish/zenbones.nvim"
   }
 }
 

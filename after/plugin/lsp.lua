@@ -55,16 +55,16 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   fortls = {},
-  sumneko_lua = {
-    Lua = {
-      -- Fix Undefined global 'vim'
-      diagnostics = {
-          globals = { 'vim' }
-      },
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  -- sumneko_lua = {
+  --   Lua = {
+  --     -- Fix Undefined global 'vim'
+  --     diagnostics = {
+  --         globals = { 'vim' }
+  --     },
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
 }
 -- Snippet to enable the language server
 require'lspconfig'.fortls.setup{}

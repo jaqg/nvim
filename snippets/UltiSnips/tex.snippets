@@ -84,6 +84,12 @@ endglobal
 # Mis snippets
 #=============================================================
 
+snippet printwidth "Print textwidth in inches" i
+% Hace falta el paquete 'layouts' -> \usepackage{layouts}
+\printinunitsof{in}\prntlen{\textwidth}
+%\printinunitsof{cm}\prntlen{\textwidth}
+endsnippet
+
 snippet codeline "Inline code" i
 \inline{$1}$0
 endsnippet 
@@ -95,6 +101,11 @@ snippet codefile "Insert code file" i
 	% lastline=12,
 	% caption=
 ]{$1}$0
+endsnippet 
+
+context "math()"
+snippet vec "vector" iA
+\vec{$1}$0
 endsnippet 
 
 context "math()"
@@ -250,6 +261,16 @@ snippet bk "Braket" i
 endsnippet
 
 context "math()"
+snippet bkp "Braket" i
+\PBraket{$1 | $2}$0
+endsnippet
+
+context "math()"
+snippet bkb "Braket" i
+\BBraket{$1 | $2}$0
+endsnippet
+
+context "math()"
 snippet average "Braket" i
 \Braket{$1}$0
 endsnippet
@@ -265,7 +286,7 @@ snippet |> "Ket" iA
 endsnippet
 
 context "math()"
-snippet ket "Ket" iA
+snippet ket "Ket" i
 \Ket{$1}$0
 endsnippet
 
@@ -310,7 +331,7 @@ snippet mat "matrix" i
 endsnippet
 
 context "math()"
-snippet det "determinante" iA
+snippet det "determinante" i
 \begin{vmatrix}
 $1
 \end{vmatrix} $0
@@ -749,8 +770,9 @@ snippet fig "Figure environment" b
 \begin{figure}[${1:tb!}]
 	\centering
 	\includegraphics[width=1.0\textwidth]{$2}
+	% \subimport{figures/}{$2.pgf}
 	\caption{${3:$2}}
-	\label{fig:${4:${2/\W+/-/g}}}
+	\label{fig:${4:${2/\W+/_/g}}}
 \end{figure}
 endsnippet
 
@@ -799,7 +821,6 @@ else:
 endsnippet
 
 snippet dm "Math" wA
-
 \[
 	${1:${VISUAL}}
 \] $0
@@ -957,7 +978,7 @@ snippet conj "conjugate" iA
 endsnippet
 
 snippet sum "sum" w
-\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+\sum_{$1}^{$2} $0
 endsnippet
 
 snippet taylor "taylor" w
@@ -984,6 +1005,10 @@ snippet part "d/dx" w
 \partial ${1:V}$0
 endsnippet
 
+snippet partfrac "d/dx" w
+\frac{\partial ${1:V}}{\partial ${2:V}}$0
+endsnippet
+
 context "math()"
 snippet sq "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}}$0
@@ -1005,7 +1030,7 @@ snippet td "to the ... power" iA
 endsnippet
 
 context "math()"
-snippet rd "to the ... power" iA
+snippet rd "to the ... power" i
 ^{($1)}$0
 endsnippet
 
@@ -1324,11 +1349,12 @@ snippet letw "let omega" iA
 Let $\Omega \subset \C$ be open.
 endsnippet
 
-
+context "math()"
 snippet HH "H" iA
 \mathbb{H}
 endsnippet
 
+context "math()"
 snippet DD "D" iA
 \mathbb{D}
 endsnippet

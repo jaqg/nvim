@@ -110,4 +110,9 @@ return require('packer').startup(function(use)
   use 'lervag/vimtex'
 
   -- use 'tranvansang/octave.vim'
+
+  use {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  }
 end)
