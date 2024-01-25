@@ -16,17 +16,17 @@ return require('packer').startup(function(use)
   -- Colorschemes {{
   use({
           'rose-pine/neovim',
-          as = 'rose-pine',
-          config = function()
-                  vim.cmd('colorscheme rose-pine')
-          end
+          -- as = 'rose-pine',
+          -- config = function()
+          --         vim.cmd('colorscheme rose-pine')
+          -- end
   })
   use({
           'catppuccin/nvim',
           as = 'catppuccin',
-          -- config = function()
-          --         vim.cmd('colorscheme catppuccin')
-          -- end
+          config = function()
+                  vim.cmd('colorscheme catppuccin-macchiato')
+          end
   })
   use({
           'folke/tokyonight.nvim',
@@ -108,6 +108,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
   use 'lervag/vimtex'
+  -- use 'm4xshen/autoclose.nvim'
 
   -- use 'tranvansang/octave.vim'
 
@@ -124,5 +125,13 @@ return require('packer').startup(function(use)
     --   vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
     --   vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     -- end
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    ft = {"python"},
+    opts = function()
+      return require "../../after/plugin/null-ls"
+    end
   }
 end)

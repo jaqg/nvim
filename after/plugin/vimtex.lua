@@ -18,10 +18,10 @@ vim.g.vimtex_toc_config = {
 -- vim.g.vimtex_latexmk_options = "-shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode"
 -- vim.g.vimtex_compiler_latexmk = "lualatex"
 -- vim.cmd([[ syntax enable ]])
--- vim.g.vimtex_compiler_latexmk_engines = {
--- 	_        = '-lualatex',
--- 	pdflatex = '-pdf',
--- 	dvipdfex = '-pdfdvi',
--- 	lualatex = '-lualatex',
--- 	xelatex  = '-xelatex'
--- }
+vim.g.vimtex_compiler_latexmk_engines = {
+	_        = '-pdflatex',
+	pdflatex = '-pdf',
+	dvipdfex = '-pdfdvi',
+	lualatex = '-lualatex',
+	xelatex  = '-xelatex'
+}

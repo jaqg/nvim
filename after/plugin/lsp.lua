@@ -51,7 +51,8 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  ruff_lsp = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   fortls = {},
@@ -66,8 +67,6 @@ local servers = {
   --   },
   -- },
 }
--- Snippet to enable the language server
-require'lspconfig'.fortls.setup{}
 
 -- Setup neovim lua configuration
 -- require('neodev').setup()
@@ -76,14 +75,33 @@ require'lspconfig'.fortls.setup{}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Snippet to enable the language server
+local lspconfig = require("lspconfig")
+
+require'lspconfig'.fortls.setup{}
+
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
+})
+
 -- Setup mason so it can manage external tooling
 require('mason').setup()
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
+local mason = require 'mason'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+}
+
+mason.setup {
+  ensure_installed = {
+    "black",
+    "mypy",
+  },
 }
 
 mason_lspconfig.setup_handlers {
@@ -220,7 +238,7 @@ cmp.setup {
     --   },
     -- },
   },
-  -- documentation = {
+ --  documentation = {
 	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	-- },
 	-- experimental = {

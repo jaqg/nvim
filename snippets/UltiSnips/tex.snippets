@@ -90,7 +90,13 @@ snippet printwidth "Print textwidth in inches" i
 %\printinunitsof{cm}\prntlen{\textwidth}
 endsnippet
 
-snippet codeline "Inline code" i
+snippet code "Code" i
+\begin{lstlisting}[language=$1]{${2:name}}
+$0
+\end{lstlisting}
+endsnippet 
+
+snippet codeinline "Inline code" i
 \inline{$1}$0
 endsnippet 
 
@@ -245,7 +251,9 @@ snippet columns "Columns for beamer"
 endsnippet
 
 snippet frame "Beamer frame"
-\begin{frame}{${1:Titulo}}
+% -----------------------------------------------------------------------------
+\renewcommand{\sec}{${1:Titulo}}
+\begin{frame}{\sec}
 	$2
 \end{frame}$0
 endsnippet
@@ -286,7 +294,7 @@ snippet |> "Ket" iA
 endsnippet
 
 context "math()"
-snippet ket "Ket" i
+snippet ket "Ket" iA
 \Ket{$1}$0
 endsnippet
 
@@ -1168,8 +1176,13 @@ endsnippet
 
 priority 300
 context "math()"
-snippet dint "integral" wA
+snippet int "integral" wA
 \int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet dotsint "integral" wA
+\idotsint_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
 endsnippet
 
 priority 200
@@ -1324,7 +1337,7 @@ endsnippet
 priority 10
 context "math()"
 snippet "bar" "bar" riA
-\overline{$1}$0
+\bar{$1}$0
 endsnippet
 
 priority 100
@@ -1357,6 +1370,11 @@ endsnippet
 context "math()"
 snippet DD "D" iA
 \mathbb{D}
+endsnippet
+
+context "math()"
+snippet func "functional f[g]" iA
+\func{$1}{$2}$0
 endsnippet
 
 # vim:ft=snippets

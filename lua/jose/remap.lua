@@ -62,3 +62,6 @@ vim.keymap.set("n", "<leader>cv", "<cmd>!zathura %:r.pdf<CR>")
 
 -- Remap for spell check
 vim.keymap.set("n", "<leader>sp", "<cmd>setlocal spell spelllang=en_us<CR>")
+-- ]s			Move to next misspelled
+-- [s			Move to previous misspelled
+-- z=			Suggestions
